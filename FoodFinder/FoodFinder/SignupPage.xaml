@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FoodFinder.SignupPage">
+
+        <!--JH: Generic padding of application across iOS & Android -->
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="20, 40, 20, 20"/>
+            <On Platform="Android" Value="0, 0, 50, 50"/>
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        
+        <StackLayout Orientation="Vertical">
+            
+            <StackLayout Padding="0, 0, 0, 30">
+                <!--EDH: simple back button -->
+                <Button Text="Back"
+                    HorizontalOptions="Start"
+                    FontSize="Micro"
+                    BorderColor="White"
+                    BorderRadius="10"
+                    BackgroundColor="White"
+                    BorderWidth="2"
+                    Clicked="OnBackButtonClicked"/>
+            </StackLayout>
+            <StackLayout Padding="50, 0, 0, 0">
+                <!--JH: The image of the UTAS Logo-->
+                <Image Source="http://www.utas.edu.au/__data/assets/image/0007/858157/UTAS-Colour-Horizontal.png"
+                   Aspect="AspectFit"/>
+
+                <!--JH: Sustainability Team's Moto-->
+                <Label Text="Simple Actions Towards Sustainability" 
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Small"/>
+
+                <!--JH: Application Name-->
+                <Label Text="Food Finder"
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="Start"
+                   FontAttributes="Bold"
+                   FontSize="Large"/>
+
+                <!--JH: A field for the user to submit their email-->
+                <Entry x:Name="email"
+                   Placeholder="Email" 
+                   Keyboard="Email" 
+                   HorizontalTextAlignment="Center"/>
+
+                <!--JH: A field for the user to submit their password for their new account-->
+                <Entry x:Name="password"
+                   Placeholder="Password" 
+                   IsPassword="True" 
+                   HorizontalTextAlignment="Center"/>
+
+                <!--JH: A field for the user to submit their password again for confirmation-->
+                <Entry x:Name="passwordConfirm"
+                   Placeholder="Confirm Password" 
+                   IsPassword="True" 
+                   HorizontalTextAlignment="Center"/>
+
+                <!--JH: TODO The Primary Campus of the user-->
+                <Picker x:Name="primaryCampus" 
+                    Title="Choose a primary campus">
+                    <Picker.Items>
+                        <x:String>Newnham</x:String>
+                        <x:String>Sandy Bay</x:String>
+                        <x:String>Inveresk</x:String>
+                        <x:String>Cradle Coast</x:String>
+                        <x:String>Menzies</x:String>
+                        <x:String>Rozelle</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <StackLayout Orientation="Horizontal">
+                    <!--JH: A link to open the EULA page.
+                        This was troublesome for me. I'm not sure how I can 
+                        control the location/space of the label and the button.-->
+                    <Label Text="I agree with the"/>
+                    <Button Text="EULA"
+                        TextColor="Blue" 
+                        x:Name="agreementLink" 
+                        Clicked="OnEULASelect"/>
+
+                    <!--JH: A slider(EDH: Switch) to confirm that the user agrees to the EULA-->
+                    <Switch x:Name="checkBoxEULAcheck"
+                            IsToggled="False"
+                            Toggled="userAgreesWithEULA"
+                            />
+                </StackLayout>
+
+                <!--JH: A button to check the entries supplied by the user are valid for a new profile-->
+                <Button x:Name="buttonSignup"
+                    Text="SignUp"  
+                    HorizontalOptions="CenterAndExpand" 
+                    TextColor="Blue" 
+                    Clicked="ClickedSignup"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
